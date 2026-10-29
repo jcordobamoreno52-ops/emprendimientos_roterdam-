@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="Emprendimiento Rotterdam">
+<meta property="og:description" content="Catálogos y apps para los negocios de la unidad">
+<meta property="og:image" content="img/rotterdam-logo.png">
+<link rel="icon" href="img/rotterdam-icon.png">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<title>Emprendimiento Rotterdam</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: una sola columna tipo vitrina; el celular interactivo es el protagonista, luego el tablero de la unidad */
+:root{
+  --bg:#f5f7f6; --surface:#ffffff; --ink:#10221f; --muted:#5b6b67; --line:#dfe6e3;
+  --brand:#0d4d45; --brand-2:#e8f1ee; --accent:#f26b1d; --accent-soft:#fde8da;
+  --ok:#1f9d6b; --warn:#d99a0b; --bad:#d64545;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1715; --surface:#13221f; --ink:#e8f0ee; --muted:#9db0ab; --line:#24372f;
+  --brand:#5cc3b0; --brand-2:#17302b; --accent:#ff8a45; --accent-soft:#3a2416; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1715; --surface:#13221f; --ink:#e8f0ee; --muted:#9db0ab; --line:#24372f;
+  --brand:#5cc3b0; --brand-2:#17302b; --accent:#ff8a45; --accent-soft:#3a2416; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.08}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* Firma */
+.top{padding-block:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sign{display:flex;align-items:center;gap:12px}
+.mono{width:48px;height:48px;border-radius:14px;background:var(--brand);color:var(--bg);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-1px;position:relative}
+.mono::after{content:"";position:absolute;right:-4px;bottom:-4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.sign b{display:block;font-family:var(--display);font-size:18px}
+.sign span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tag{font-size:13px;font-weight:600;background:var(--accent-soft);color:var(--accent);padding:6px 12px;border-radius:99px}
+
+/* Firma + fondo unidad */
+.firma{height:64px;width:auto;display:block}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .firma{filter:invert(1)}}
+:root[data-theme="dark"] .firma{filter:invert(1)}
+.bgband{position:relative;overflow:hidden;isolation:isolate}
+.bgband::before{content:"";position:absolute;inset:-30px;background:url(img/unidad.jpg) center 30%/cover no-repeat;filter:blur(7px) saturate(1.1);opacity:.55;z-index:-2}
+.bgband::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 55%,transparent) 0%,color-mix(in srgb,var(--bg) 70%,transparent) 55%,var(--bg) 100%);z-index:-1}
+.logo-card{background:#fff;border-radius:22px;padding:14px 20px;display:inline-flex;box-shadow:0 12px 30px -12px rgba(0,0,0,.4);animation:float 5s ease-in-out infinite}
+.logo-card img{height:110px;width:auto;max-width:100%;display:block}
+.hero-logo{background:#fff;border-radius:18px;padding:10px 14px;display:inline-flex;margin-bottom:18px;box-shadow:0 10px 24px -14px rgba(13,77,69,.6);animation:float 5s ease-in-out infinite}
+.hero-logo img{height:64px;width:auto;max-width:100%;display:block}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.app .ico img{width:100%;height:100%;object-fit:contain;border-radius:15px;background:#fff;padding:3px}
+@media (prefers-reduced-motion:reduce){.logo-card,.hero-logo{animation:none}}
+@media (max-width:560px){.logo-card img{height:72px}.firma{height:48px}}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:24px 56px}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:800;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);font-size:18px;max-width:46ch;margin:18px 0 22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);background:var(--surface);padding:6px 12px;border-radius:99px;font-size:14px;font-weight:500}
+.hint{margin-top:22px;font-size:14px;color:var(--brand);font-weight:600}
+
+/* Celular */
+.phone{width:300px;max-width:100%;margin:0 auto;aspect-ratio:9/18.5;background:#0b0f0e;border-radius:44px;padding:12px;box-shadow:0 30px 60px -20px rgba(13,77,69,.45)}
+.screen{width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--surface);position:relative;display:flex;flex-direction:column}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#0b0f0e;border-radius:12px;z-index:3}
+.home{flex:1;background:linear-gradient(160deg,#0d4d45,#123a5a 70%,#f26b1d 160%);padding:52px 18px 18px;display:flex;flex-direction:column;gap:18px;color:#fff}
+.clock{font-family:var(--display);font-size:44px;font-weight:700;text-align:center}
+.date{text-align:center;font-size:13px;opacity:.8;margin-top:-14px}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px;margin-top:auto}
+.app{background:none;border:0;color:#fff;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10.5px}
+.ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:rgba(255,255,255,.18)}
+.app.main .ico{background:#fff;color:#0d4d45;font-family:var(--display);font-weight:800;font-size:15px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(242,107,29,.8)}50%{box-shadow:0 0 0 8px rgba(242,107,29,0)}}
+@media (prefers-reduced-motion:reduce){.app.main .ico{animation:none}}
+.store{position:absolute;inset:0;background:var(--surface);display:flex;flex-direction:column;z-index:2}
+.sbar{padding:40px 14px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.back{border:0;background:var(--brand-2);color:var(--brand);width:30px;height:30px;border-radius:50%;font-weight:700}
+.sbar b{font-family:var(--display);font-size:16px}
+.sbar small{display:block;color:var(--muted);font-size:11px}
+.tabs{display:flex;gap:6px;padding:10px 14px}
+.tabs button{flex:1;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:7px 4px;font-size:12px;font-weight:600}
+.tabs button[aria-selected="true"]{background:var(--brand);border-color:var(--brand);color:var(--bg)}
+.pane{flex:1;overflow:auto;padding:0 14px 14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.prod{border:1px solid var(--line);border-radius:12px;padding:8px;font-size:12px}
+.prod .pic{height:62px;border-radius:8px;background:var(--brand-2);display:grid;place-items:center;font-size:28px;margin-bottom:6px}
+.prod b{display:block;font-size:12px;line-height:1.25}
+.prod .p{color:var(--brand);font-weight:700}
+.st{display:inline-block;font-size:10px;font-weight:700;padding:1px 6px;border-radius:6px;margin-top:3px}
+.st.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.st.low{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.st.out{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.kpi{border-radius:12px;padding:10px;background:var(--brand-2)}
+.kpi small{font-size:10.5px;color:var(--muted);display:block}
+.kpi b{font-family:var(--display);font-size:19px;font-variant-numeric:tabular-nums}
+.kpi.hot{background:var(--accent-soft)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:80px;padding:6px 2px;border-bottom:1px solid var(--line)}
+.bars div{flex:1;background:var(--brand);border-radius:5px 5px 0 0;opacity:.85}
+.bars div:last-child{background:var(--accent);opacity:1}
+.days{display:flex;gap:6px;font-size:10px;color:var(--muted);margin-bottom:10px}
+.days span{flex:1;text-align:center}
+.alert{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:11.5px;margin-top:6px}
+.alert .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.alert button{margin-left:auto;border:0;background:var(--brand);color:var(--bg);border-radius:8px;padding:4px 8px;font-size:11px;font-weight:600}
+.alert.done{opacity:.55}
+.pill-link{margin:8px 14px 14px;border:0;border-radius:12px;padding:10px;background:var(--accent);color:#fff;font-weight:700;font-size:12.5px}
+
+/* Secciones */
+section{padding-block:56px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.sec-h{font-size:clamp(28px,4.4vw,44px);font-weight:800;letter-spacing:-.015em}
+.lead{color:var(--muted);max-width:58ch;margin:12px 0 26px;font-size:17px}
+
+/* Antes vs ahora */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vs > div{border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.vs .old{background:var(--surface);border:1px dashed var(--line)}
+.vs .new{background:var(--brand-2)}
+.vs h3{font-size:20px}
+.vs .lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.vs .old .lbl{color:var(--bad)} .vs .new .lbl{color:var(--brand)}
+.vs ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:4px}
+.flyer{position:relative;border-radius:14px;overflow:hidden;padding:14px;background:radial-gradient(circle at 20% 20%,#ff00c8,#ff6a00 40%,#ffe600 70%,#00e1ff);color:#fff;font-family:Impact,"Arial Black",sans-serif;text-align:center;text-shadow:2px 2px 0 #7a00ff,-1px -1px 0 #000;min-height:250px;display:flex;flex-direction:column;justify-content:center;gap:4px;transform:rotate(-1.5deg)}
+.flyer .big{font-size:34px;line-height:.95;letter-spacing:.5px}
+.flyer .mid{font-size:17px;color:#fffb00}
+.flyer .sm{font-family:Georgia,serif;font-size:11px;font-style:italic;text-shadow:none;color:#3a004f;background:rgba(255,255,255,.6);border-radius:6px;padding:3px}
+.flyer .burst{position:absolute;width:74px;height:74px;background:#ff0040;color:#fff;border-radius:50%;display:grid;place-items:center;font-size:14px;line-height:1;right:8px;top:8px;transform:rotate(14deg);box-shadow:0 0 0 4px #fff200}
+.flyer .burst2{left:8px;right:auto;top:auto;bottom:10px;background:#00c853;transform:rotate(-12deg);width:62px;height:62px;font-size:12px}
+.flyer .wm{position:absolute;inset:0;font-size:60px;opacity:.12;display:grid;place-items:center;pointer-events:none}
+.mini{background:var(--surface);border-radius:14px;padding:12px;min-height:250px;display:flex;flex-direction:column;gap:8px}
+.mini .h{display:flex;justify-content:space-between;align-items:center}
+.mini .h b{font-family:var(--display);font-size:15px}
+.mini .h span{font-size:11px;color:var(--muted)}
+.mini .q{border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:12px;color:var(--muted)}
+.mini .row{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:8px}
+.mini .row i{font-style:normal;font-size:22px;width:36px;height:36px;border-radius:9px;background:var(--brand-2);display:grid;place-items:center}
+.mini .row b{font-size:13px;display:block}
+.mini .row small{color:var(--brand);font-weight:700;font-size:12px}
+.mini .row .st{margin-left:auto}
+@media (max-width:720px){.vs{grid-template-columns:1fr}}
+
+/* Tablero Rotterdam */
+.board{background:var(--brand);color:#fff;border-radius:28px;overflow:hidden}
+.board-in{padding:28px;display:flex;flex-direction:column;gap:20px}
+.board-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.board-head h2{font-size:clamp(28px,4.6vw,46px);font-weight:800;color:#fff}
+.board-head h2 span{color:#ffb98c}
+.board-head p{margin:12px 0 0;opacity:.8;font-size:15px}
+.search{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:11px 14px;color:#fff;font:inherit;width:260px;max-width:100%}
+.search::placeholder{color:rgba(255,255,255,.65)}
+.cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.cats button{flex:none;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:9px 16px;border-radius:99px;font-weight:600;font-size:14px}
+.cats button[aria-pressed="true"]{background:#fff;color:#0d4d45;border-color:#fff}
+.cats button em{font-style:normal;opacity:.7;margin-left:4px;font-size:12px}
+.shops{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.shop{background:var(--surface);color:var(--ink);border-radius:18px;padding:14px;border:0;text-align:left;display:flex;gap:12px;align-items:center;transition:transform .15s}
+.shop:hover{transform:translateY(-2px)}
+.shop .av{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:24px;flex:none}
+.shop b{display:block;font-family:var(--display);font-size:16px}
+.shop small{color:var(--muted);font-size:12.5px;display:block}
+.shop .torre{font-size:11px;font-weight:700;color:var(--brand)}
+.detail{background:rgba(255,255,255,.08);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.detail h3{font-size:20px;color:#fff}
+.dprods{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.dprods div{background:rgba(255,255,255,.1);border-radius:12px;padding:10px;font-size:13px}
+.dprods div span{font-size:24px;display:block}
+.wa{align-self:flex-start;border:0;background:#25d366;color:#06301a;font-weight:700;border-radius:12px;padding:9px 14px;font-size:14px}
+.empty{opacity:.75;font-size:14px}
+.demo-note{font-size:12px;opacity:.65}
+
+/* Negocios */
+.biz{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.biz div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+.biz b{font-family:var(--display);font-size:17px;display:block;margin:6px 0 2px}
+.biz small{color:var(--muted);font-size:13.5px}
+.biz span{font-size:26px}
+
+/* Pasos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{border-top:3px solid var(--brand);padding-top:14px}
+.step i{font-style:normal;font-family:var(--display);font-weight:800;color:var(--accent);font-size:15px}
+.step b{display:block;font-family:var(--display);font-size:19px;margin:4px 0}
+.step p{margin:0;color:var(--muted);font-size:15px}
+
+/* Promo */
+.promo{background:var(--accent-soft);border-radius:28px;padding:32px;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center}
+.promo h2{font-size:clamp(26px,4vw,40px);font-weight:800}
+.promo p{color:var(--muted);margin:10px 0 0}
+.promo .card{background:var(--surface);border-radius:20px;padding:20px;text-align:center}
+.promo .card b{font-family:var(--display);font-size:42px;color:var(--accent);display:block;line-height:1}
+.promo .card small{color:var(--muted)}
+footer{padding-block:32px 48px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:24px}
+
+@media (max-width:820px){
+  .hero,.promo{grid-template-columns:1fr}
+  .biz{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .board-in{padding:20px}
+}
+</style>
+
+<div class="bgband"><div class="wrap">
+  <header class="top">
+    <img class="firma" src="img/firma.png" alt="J. Córdoba · José Luis Córdoba · Ingeniería, IA y Automatización">
+    <div class="tag">Propuesta para vecinos de Rotterdam</div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="hero-logo"><img src="img/rotterdam-logo.png" alt="Emprendimiento Rotterdam"></div>
+      <h1>Tu negocio en un link. <em>Todo Rotterdam</em> en una app.</h1>
+      <p>Catálogos web inteligentes para los emprendimientos de la unidad. Tus clientes ven lo que vendes sin buscar entre fotos del grupo, y tú ves cómo va tu tienda.</p>
+      <div class="chips"><span>Comida</span><span>Perfumería</span><span>Joyería</span><span>Ropa</span><span>Belleza</span><span>Mascotas</span><span>Servicios</span></div>
+      <div class="hint">→ Toca la app en el celular para ver cómo funciona</div>
+    </div>
+
+    <div class="phone" aria-label="Demostración en celular">
+      <div class="screen">
+        <div class="notch"></div>
+        <div class="home" id="home">
+          <div class="clock" id="clock">9:41</div>
+          <div class="date">Emprendimientos de tu unidad</div>
+          <div class="apps">
+            <button class="app main" id="openStore"><span class="ico">MS</span>Mi Tienda</button>
+            <button class="app" data-goto="board"><span class="ico"><img src="img/rotterdam-icon.png" alt=""></span>Rotterdam</button>
+            <div class="app"><span class="ico">💬</span>WhatsApp</div>
+            <div class="app"><span class="ico">📷</span>Cámara</div>
+          </div>
+        </div>
+
+        <div class="store" id="store" hidden>
+          <div class="sbar">
+            <button class="back" id="closeStore" aria-label="Volver">←</button>
+            <div><b>Dulce Aroma · Perfumería</b><small>Torre 3 · Ejemplo</small></div>
+          </div>
+          <div class="tabs" role="tablist">
+            <button role="tab" aria-selected="true" data-tab="cat">Catálogo</button>
+            <button role="tab" aria-selected="false" data-tab="res">Mi resumen</button>
+          </div>
+          <div class="pane" id="paneCat">
+            <div class="grid2">
+              <div class="prod"><div class="pic">🌸</div><b>Floral Rosé 100ml</b><span class="p">$95.000</span><br><span class="st ok">Disponible</span></div>
+              <div class="prod"><div class="pic">🌊</div><b>Ocean Men 100ml</b><span class="p">$110.000</span><br><span class="st low">Quedan 2</span></div>
+              <div class="prod"><div class="pic">🍯</div><b>Vainilla Oud 50ml</b><span class="p">$80.000</span><br><span class="st ok">Disponible</span></div>
+              <div class="prod"><div class="pic">🍋</div><b>Citrus Fresh 75ml</b><span class="p">$70.000</span><br><span class="st out">Agotado</span></div>
+              <div class="prod"><div class="pic">🌿</div><b>Bergamota 100ml</b><span class="p">$98.000</span><br><span class="st ok">Disponible</span></div>
+              <div class="prod"><div class="pic">💎</div><b>Kit regalo x3</b><span class="p">$150.000</span><br><span class="st ok">Disponible</span></div>
+            </div>
+          </div>
+          <div class="pane" id="paneRes" hidden>
+            <div class="kpis">
+              <div class="kpi hot"><small>Vendido este mes</small><b>$2.340.000</b></div>
+              <div class="kpi"><small>Ganancia</small><b>$890.000</b></div>
+              <div class="kpi"><small>Productos disponibles</small><b>24</b></div>
+              <div class="kpi"><small>Pedidos</small><b>31</b></div>
+            </div>
+            <div class="bars" aria-hidden="true"><div style="height:40%"></div><div style="height:55%"></div><div style="height:35%"></div><div style="height:70%"></div><div style="height:60%"></div><div style="height:85%"></div><div style="height:100%"></div></div>
+            <div class="days"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+            <div class="alert" id="a1"><span class="dot" style="background:var(--bad)"></span>Citrus Fresh agotado<button data-fix="a1">Pedir</button></div>
+            <div class="alert" id="a2"><span class="dot" style="background:var(--warn)"></span>Ocean Men: quedan 2<button data-fix="a2">Reponer</button></div>
+          </div>
+          <button class="pill-link" data-goto="board">Ver en Emprendimiento Rotterdam →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">La diferencia</div>
+    <h2 class="sec-h">Un flyer bonito no es una tienda</h2>
+    <p class="lead">Hoy cualquiera saca un flyer con IA en dos minutos. Se ve llamativo, pero en el grupo se pierde entre cien fotos y nadie sabe qué hay disponible. Una app real trabaja por ti.</p>
+    <div class="vs">
+      <div class="old">
+        <div class="lbl">Lo de siempre</div>
+        <div class="flyer" aria-label="Ejemplo de flyer saturado">
+          <div class="wm">★★★</div>
+          <div class="burst">¡¡50%<br>OFF!!</div>
+          <div class="mid">✨🔥 ¡¡NUEVO NUEVO!! 🔥✨</div>
+          <div class="big">MEGA SUPER<br>PROMO TOTAL</div>
+          <div class="mid">PERFUMES • ROPA • TODO</div>
+          <div class="sm">pregunte por interno precios sin compromiso envíos gratis* aplican condiciones colores varios hasta agotar existencias</div>
+          <div class="burst burst2">¡¡YA!!<br>⭐⭐</div>
+        </div>
+        <ul><li>Se pierde en el chat a las dos horas</li><li>No dice qué hay ni qué se acabó</li><li>Cada cambio es otro flyer y otra foto</li></ul>
+      </div>
+      <div class="new">
+        <div class="lbl">Con tu app</div>
+        <div class="mini">
+          <div class="h"><b>Dulce Aroma</b><span>Torre 3 · actualizado hoy</span></div>
+          <div class="q">🔍 Buscar perfume…</div>
+          <div class="row"><i>🌸</i><div><b>Floral Rosé 100ml</b><small>$95.000</small></div><span class="st ok">Disponible</span></div>
+          <div class="row"><i>🌊</i><div><b>Ocean Men 100ml</b><small>$110.000</small></div><span class="st low">Quedan 2</span></div>
+          <div class="row"><i>🍋</i><div><b>Citrus Fresh 75ml</b><small>$70.000</small></div><span class="st out">Agotado</span></div>
+        </div>
+        <ul><li>Un solo link que siempre está al día</li><li>El cliente busca y ve qué hay de una</li><li>Tú ves ventas, inventario y costos</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="board">
+  <div class="wrap">
+    <div class="eyebrow">La idea grande</div>
+    <h2 class="sec-h">Un solo lugar para comprarle a los vecinos</h2>
+    <p class="lead">Cada tienda tiene su catálogo, y todas quedan juntas en <b>Emprendimiento Rotterdam</b>. Un link, buscas por categoría y le escribes directo al vecino. Pruébalo:</p>
+
+    <div class="board">
+      <div class="board-in">
+        <div class="board-head">
+          <div><div class="logo-card"><img src="img/rotterdam-logo.png" alt="Emprendimiento Rotterdam"></div><p>Lo que venden tus vecinos, sin salir de la unidad</p></div>
+          <input class="search" id="q" type="search" placeholder="Buscar: pizza, uñas, perfume…">
+        </div>
+        <div class="cats" id="cats"></div>
+        <div class="shops" id="shops"></div>
+        <div class="detail" id="detail" hidden></div>
+        <div class="demo-note">Tiendas de ejemplo para mostrar la idea. Las reales serán las de los vecinos que se unan.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Para todo tipo de negocio</div>
+    <h2 class="sec-h">Hacemos la app de tu emprendimiento</h2>
+    <p class="lead">No es una página normal: es una app inteligente. Tus clientes ven el catálogo y tú ves ventas, inventario y costos, todo desde el celular.</p>
+    <div class="biz">
+      <div><span>🍔</span><b>Comida</b><small>Menú, domicilios dentro de la unidad, pedidos del día</small></div>
+      <div><span>🧴</span><b>Perfumerías</b><small>Catálogo por marca, stock y precios al día</small></div>
+      <div><span>💍</span><b>Joyerías</b><small>Fotos lindas, referencias y apartados</small></div>
+      <div><span>👗</span><b>Ropa y accesorios</b><small>Tallas, colores y lo que ya se agotó</small></div>
+      <div><span>💅</span><b>Belleza</b><small>Servicios, precios y agenda de citas</small></div>
+      <div><span>🐶</span><b>Mascotas</b><small>Productos, baños y paseos</small></div>
+      <div><span>🧁</span><b>Repostería</b><small>Pedidos por encargo y fechas</small></div>
+      <div><span>🛠️</span><b>Servicios</b><small>Arreglos, clases, asesorías</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Así de fácil</div>
+    <h2 class="sec-h">Cómo arrancamos</h2>
+    <p class="lead">Tú solo me pasas la información. Yo me encargo del resto.</p>
+    <div class="steps">
+      <div class="step"><i>1</i><b>Me escribes</b><p>Por interno me cuentas qué vendes. Fotos, precios, lo que tengas.</p></div>
+      <div class="step"><i>2</i><b>Armo tu app</b><p>Creo tu catálogo con tu resumen de ventas e inventario.</p></div>
+      <div class="step"><i>3</i><b>Compartes tu link</b><p>Lo mandas al grupo y quedas dentro de Emprendimiento Rotterdam.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="promo">
+      <div>
+        <div class="eyebrow">Promoción de lanzamiento</div>
+        <h2>Precio especial para las primeras tiendas de la unidad</h2>
+        <p>Si te interesa, escríbeme al interno por WhatsApp y te cuento cómo quedaría tu negocio.</p>
+      </div>
+      <div class="card"><small>Cupos de lanzamiento</small><b>10</b><small>primeras tiendas</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <img class="firma" src="img/firma.png" alt="J. Córdoba · Ingeniería, IA y Automatización" style="height:52px">
+    <div>Vecino de Rotterdam · Bello</div>
+  </footer>
+</div>
+
+<script>
+const shops=[
+ {n:"La Parrilla de la 5",c:"Comida rápida",t:"Torre 5",i:"🍔",bg:"#fde8da",d:"Hamburguesas y perros",p:[["🍔","Hamburguesa doble","$22.000"],["🌭","Perro especial","$15.000"],["🍟","Papas criollas","$8.000"]]},
+ {n:"Pizza Nonna",c:"Comida rápida",t:"Torre 2",i:"🍕",bg:"#fde8da",d:"Pizza artesanal viernes y sábado",p:[["🍕","Pizza hawaiana","$38.000"],["🍕","Pizza pepperoni","$40.000"]]},
+ {n:"Empanadas Doña Gloria",c:"Comida rápida",t:"Torre 1",i:"🥟",bg:"#fde8da",d:"Empanadas y buñuelos",p:[["🥟","Empanada x5","$10.000"],["🟡","Buñuelo x3","$6.000"]]},
+ {n:"Dulce Aroma",c:"Perfumería",t:"Torre 3",i:"🧴",bg:"#e3ecfb",d:"Perfumes y kits de regalo",p:[["🌸","Floral Rosé","$95.000"],["🌊","Ocean Men","$110.000"],["💎","Kit regalo","$150.000"]]},
+ {n:"Brillo Joyas",c:"Joyería",t:"Torre 4",i:"💍",bg:"#f6ecd2",d:"Plata 925 y accesorios",p:[["💍","Anillo plata","$85.000"],["📿","Cadena","$120.000"]]},
+ {n:"Nails by Caro",c:"Belleza",t:"Torre 6",i:"💅",bg:"#f8e1ea",d:"Uñas y cejas con cita",p:[["💅","Semipermanente","$45.000"],["✨","Cejas","$25.000"]]},
+ {n:"Closet Urbano",c:"Ropa",t:"Torre 2",i:"👕",bg:"#e5f3ea",d:"Ropa juvenil y deportiva",p:[["👕","Camiseta oversize","$45.000"],["🧢","Gorra","$35.000"]]},
+ {n:"Peludos Felices",c:"Mascotas",t:"Torre 7",i:"🐶",bg:"#efe6fb",d:"Concentrado y baños",p:[["🦴","Snacks","$12.000"],["🛁","Baño perro pequeño","$35.000"]]},
+ {n:"Tortas Mía",c:"Repostería",t:"Torre 5",i:"🧁",bg:"#fbe7e1",d:"Tortas por encargo",p:[["🎂","Torta 20 porciones","$90.000"],["🧁","Cupcakes x6","$30.000"]]}
+];
+let cat="Todas";
+const $=s=>document.querySelector(s);
+function renderCats(){
+  const counts={Todas:shops.length};shops.forEach(s=>counts[s.c]=(counts[s.c]||0)+1);
+  $("#cats").innerHTML=Object.keys(counts).map(k=>`<button aria-pressed="${k===cat}" data-c="${k}">${k}<em>${counts[k]}</em></button>`).join("");
+}
+function renderShops(){
+  const q=$("#q").value.trim().toLowerCase();
+  const list=shops.filter(s=>(cat==="Todas"||s.c===cat)&&(!q||(s.n+s.c+s.d+s.p.map(p=>p[1]).join(" ")).toLowerCase().includes(q)));
+  $("#shops").innerHTML=list.length?list.map(s=>`<button class="shop" data-s="${shops.indexOf(s)}"><span class="av" style="background:${s.bg}">${s.i}</span><span><b>${s.n}</b><small>${s.d}</small><span class="torre">${s.t} · ${s.c}</span></span></button>`).join(""):`<div class="empty">No encontramos nada con eso. Prueba otra palabra.</div>`;
+}
+$("#cats").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;renderCats();renderShops();$("#detail").hidden=true;});
+$("#q").addEventListener("input",renderShops);
+$("#shops").addEventListener("click",e=>{const b=e.target.closest(".shop");if(!b)return;const s=shops[b.dataset.s];const d=$("#detail");
+  d.innerHTML=`<h3>${s.i} ${s.n} <small style="font-size:13px;opacity:.7;font-family:var(--body)">${s.t}</small></h3><div class="dprods">${s.p.map(p=>`<div><span>${p[0]}</span>${p[1]}<br><b>${p[2]}</b></div>`).join("")}</div><button class="wa" type="button">Escribirle por WhatsApp</button>`;
+  d.hidden=false;d.scrollIntoView({behavior:"smooth",block:"nearest"});});
+renderCats();renderShops();
+
+// Celular
+const store=$("#store");
+$("#openStore").onclick=()=>{store.hidden=false};
+$("#closeStore").onclick=()=>{store.hidden=true};
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  $("#paneCat").hidden=b.dataset.tab!=="cat";$("#paneRes").hidden=b.dataset.tab!=="res";});
+document.querySelectorAll("[data-fix]").forEach(b=>b.onclick=()=>{const a=$("#"+b.dataset.fix);a.classList.add("done");b.textContent="Listo ✓";b.disabled=true;});
+document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.goto).scrollIntoView({behavior:"smooth"}));
+function tick(){const d=new Date();$("#clock").textContent=d.getHours()+":"+String(d.getMinutes()).padStart(2,"0")}
+tick();setInterval(tick,30000);
+</script>
+
+</body>
+</html>
